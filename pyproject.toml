@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "evalpro"
+version = "0.0.dev1"
+description = "Evaluaton tools for Protein AI"
+authors = ["Zhang.H.N <zhang.h.n@foxmail.com>"]
+license = "MIT License"
+readme = "README.md"
+exclude = ["**/test_*.py"]
+
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.10"
+pyarrow = "^19.0.0"
+evaluate = "^0.4.3"
+scipy = "<15"
+tmtools = "^0.2.0"
+numpy = "<2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
