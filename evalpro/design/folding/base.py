@@ -16,7 +16,6 @@ class FoldingBase(ABC):
     def predict(self, seq: str, pdb_path: Path, *args, **kwargs):
         raise NotImplementedError
 
-
     def predict_all(
             self, seqs: dict, pdb_path: Path, *args, 
             n_jobs: int = 1, progress_bar: bool = False,
@@ -26,7 +25,7 @@ class FoldingBase(ABC):
                 v,
                 pdb_path / (k + '.pdb'),
                 *args,
-                **kwargs) for k,v in seqs)
+                **kwargs) for k,v in seqs.items())
 
         elif n_jobs > 1:
             parallel = Parallel(n_jobs=n_jobs, return_as='generator_unordered')
@@ -34,7 +33,7 @@ class FoldingBase(ABC):
                 v,
                 pdb_path / (k + '.pdb'),
                 *args,
-                **kwargs) for k,v in seqs)
+                **kwargs) for k,v in seqs.items())
         else:
             raise ValueError('n_jobs must be >= 1')
         
